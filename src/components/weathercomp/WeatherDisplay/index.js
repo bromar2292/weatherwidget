@@ -53,19 +53,15 @@ class InformationDisplay extends React.Component {
       "50d": mist
     };
 
-    const WeatherIcon = ({ icon }) => {
-      return icons[icon] || sunny;
+    const WeatherIcon = () => {
+      return icons[this.props.icon] || sunny;
     };
 
     const celsius = Math.round(this.props.temperature - 273.15);
     return (
       <>
         <div className={css.imgContainer}>
-          <img
-            src={WeatherIcon(icons)}
-            alt="weather img"
-            className={css.imgSize}
-          />
+          <img src={WeatherIcon()} alt="weather img" className={css.imgSize} />
         </div>
         <div>
           <div>
@@ -76,7 +72,6 @@ class InformationDisplay extends React.Component {
             <p>Temperature = {celsius} C</p>
 
             <p>Description= {this.props.description}</p>
-            <p>weather icon = {this.props.icon}</p>
           </div>
         </div>
       </>
