@@ -1,0 +1,13 @@
+.imgContainer {
+  box-sizing: border-box;
+  position: absolute;
+  left: 360px;
+  bottom: 30px;
+  width: 300px;
+}
+
+.imgSize {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+}
