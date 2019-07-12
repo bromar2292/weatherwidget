@@ -12,35 +12,9 @@ import fewClouds from "./partlycloudy.png";
 
 import css from "./WeatherDisplay.module.css";
 
+// This component renders the information from the api
 class InformationDisplay extends React.Component {
-  // const weatherIcon = (this.props.icon)=>{
-  //     if (this.props.icon==01)
-  // }
-
   render() {
-    // const icons = ({ icon }) => {
-    //   if (icon === "01d") {
-    //     return sunny;
-    //   } else if (icon === "02d") {
-    //     return fewClouds;
-    //   } else if (icon === "03d") {
-    //     return scatterdClouds;
-    //   } else if (icon === "04d") {
-    //     return brokenClouds;
-    //   } else if (icon === "09d") {
-    //     return showers;
-    //   } else if (icon === "10d") {
-    //     return rainshowers;
-    //   } else if (icon === "11d") {
-    //     return thunderStorm;
-    //   } else if (icon === "13d") {
-    //     return snow;
-    //   } else if (icon === "50d") {
-    //     return mist;
-    //   } else {
-    //     return sunny;
-    //   }
-    // };
     const icons = {
       "01d": sunny,
       "02d": fewClouds,
@@ -56,7 +30,8 @@ class InformationDisplay extends React.Component {
     const WeatherIcon = () => {
       return icons[this.props.icon] || sunny;
     };
-
+    // The weather api sends icon indicators for from 01d- 50d depending on what type of weather you get, so the function above
+    // finds a suitable image depending on the weather icon number
     const celsius = Math.round(this.props.temperature - 273.15);
     return (
       <>

@@ -4,8 +4,9 @@ import Header from "../Header/index.js";
 import InformationDisplay from "../WeatherDisplay/index";
 import css from "./WeatherComponent.module.css";
 
-const apiKey = "5806ed3a21b92e80ae55bfa47d55f525";
-
+const API = process.env.REACT_APP_API_URL;
+console.log(URL);
+// This is where the header and the weather display are rendered, this component is reusable as im rendinering it in app.js
 class WeatherComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -17,14 +18,14 @@ class WeatherComponent extends React.Component {
       description: undefined
     };
   }
-
+  // ive used set state to collect the data from the api, which then is passed down via props to weather display
   getWeather = async e => {
     e.preventDefault();
     // prevents the page from refreshing and loosing the data
     const city = e.target.elements.city.value;
     // grabs the data from the input field called city
     const callApi = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},uk&appid=${apiKey}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city},uk&appid=${API}`
     );
     const data = await callApi.json();
     console.log(data);

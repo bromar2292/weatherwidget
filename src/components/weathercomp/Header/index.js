@@ -5,12 +5,12 @@ class Header extends React.Component {
     return (
       <>
         <div>
-          <h1 className={css.primary}>Whats my Weather ?</h1>
-          <h5> Enter your City to find out the Uk weather </h5>
+          <h1 className={css.primary}>What's my weather ?</h1>
+          <h5> Enter your city to find out the weather in the UK </h5>
         </div>
         <form onSubmit={this.props.getWeather}>
           <input type="text" name="city" placeholder="city" height="10" />
-          <button>whats my weather?</button>
+          <button>What's my weather?</button>
         </form>
       </>
     );
