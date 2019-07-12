@@ -5,7 +5,7 @@ import InformationDisplay from "../WeatherDisplay/index";
 import css from "./WeatherComponent.module.css";
 
 const API = process.env.REACT_APP_API_URL;
-console.log(URL);
+
 // This is where the header and the weather display are rendered, this component is reusable as im rendinering it in app.js
 class WeatherComponent extends React.Component {
   constructor(props) {
