@@ -33,27 +33,25 @@ class InformationDisplay extends React.Component {
     // The weather api sends icon indicators for from 01d- 50d depending on what type of weather you get, so the function above
     // finds a suitable image depending on the weather icon number
     const celsius = Math.round(this.props.temperature - 273.15);
+
+    // below is conditional rendering so that the data is not on display will there is a value in the props, made by searching for a city
     if (!this.props.city) {
       return <h5> Enter your city to find out the weather in the UK </h5>;
     } else {
       return (
         <>
           <div className={css.imgContainer}>
-            <img
-              src={WeatherIcon()}
-              alt="weather img"
-              className={css.imgSize}
-            />
+            <img src={WeatherIcon()} alt="weather img" />
           </div>
           <div>
             <div>
-              <p> United Kingdom</p>
-              <p> {this.props.city}</p>
+              <p>Country = United Kingdom</p>
+              <p>City = {this.props.city}</p>
             </div>
             <div>
-              <p> {celsius} C</p>
+              <p>Description = {this.props.description}</p>
+              <p>Temp = {celsius} C</p>
 
-              <p> {this.props.description}</p>
               <p> Humidity = {this.props.humidity}%</p>
               <p> Wind = {this.props.wind} mph</p>
             </div>

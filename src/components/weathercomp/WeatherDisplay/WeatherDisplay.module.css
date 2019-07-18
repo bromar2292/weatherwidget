@@ -1,15 +1,4 @@
 .imgContainer {
   display: flex;
   margin-right: -30px;
-  /* box-sizing: border-box;
-  position: absolute;
-  left: 360px;
-  bottom: 30px;
-  width: 300px; */
-}
-
-.imgSize {
-  /* box-sizing: border-box;
-  position: relative;
-  width: 100%; */
 }
