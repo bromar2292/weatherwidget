@@ -15,7 +15,9 @@ class WeatherComponent extends React.Component {
       icon: undefined,
       city: undefined,
       weather: undefined,
-      description: undefined
+      description: undefined,
+      humidity: undefined,
+      wind: undefined
     };
   }
   // ive used set state to collect the data from the api, which then is passed down via props to weather display
@@ -34,7 +36,9 @@ class WeatherComponent extends React.Component {
       icon: data.weather[0].icon,
       city: data.name,
       weather: data.weather[0].main,
-      description: data.weather[0].description
+      description: data.weather[0].description,
+      humidity: data.main.humidity,
+      wind: data.wind.speed
     });
   };
 
@@ -51,6 +55,8 @@ class WeatherComponent extends React.Component {
                 city={this.state.city}
                 weather={this.state.weather}
                 description={this.state.description}
+                humidity={this.state.humidity}
+                wind={this.state.wind}
               />
             </div>
           </div>

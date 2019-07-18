@@ -1,6 +1,6 @@
 .imgContainer {
   display: flex;
-
+  margin-right: -30px;
   /* box-sizing: border-box;
   position: absolute;
   left: 360px;
