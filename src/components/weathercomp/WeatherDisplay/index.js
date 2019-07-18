@@ -33,6 +33,7 @@ class InformationDisplay extends React.Component {
     // The weather api sends icon indicators for from 01d- 50d depending on what type of weather you get, so the function above
     // finds a suitable image depending on the weather icon number
     const celsius = Math.round(this.props.temperature - 273.15);
+
     return (
       <>
         <div className={css.imgContainer}>
@@ -53,4 +54,5 @@ class InformationDisplay extends React.Component {
     );
   }
 }
+
 export default InformationDisplay;

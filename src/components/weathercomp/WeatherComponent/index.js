@@ -41,16 +41,19 @@ class WeatherComponent extends React.Component {
   render() {
     return (
       <>
-        <div className={css.box}>
-          <Header getWeather={this.getWeather} />
-
-          <InformationDisplay
-            temperature={this.state.temperature}
-            icon={this.state.icon}
-            city={this.state.city}
-            weather={this.state.weather}
-            description={this.state.description}
-          />
+        <div className={css.flexbox}>
+          <div className={css.box}>
+            <Header getWeather={this.getWeather} />
+            <div className={css.infoDisplay}>
+              <InformationDisplay
+                temperature={this.state.temperature}
+                icon={this.state.icon}
+                city={this.state.city}
+                weather={this.state.weather}
+                description={this.state.description}
+              />
+            </div>
+          </div>
         </div>
       </>
     );

@@ -1,4 +1,27 @@
 .primary {
   color: rgb(224, 189, 10);
-  opacity: 0.9;
+}
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+.header {
+  display: flex;
+  margin: 1px;
+}
+.searchDisplay {
+  display: flex;
+  justify-content: space-between;
+
+  /* height: 20px; */
+}
+
+.searchbar {
+  display: flex;
+  margin: 20px;
+}
+input {
+  border-radius: 4px;
 }
