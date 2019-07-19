@@ -35,7 +35,7 @@ class InformationDisplay extends React.Component {
     const celsius = Math.round(this.props.temperature - 273.15);
 
     // below is conditional rendering so that the data is not on display will there is a value in the props, made by searching for a city
-    if (!this.props.city) {
+    if (!this.props.errorText) {
       return <h5> Enter your city to find out the weather in the UK </h5>;
     } else {
       return (
@@ -60,7 +60,7 @@ class InformationDisplay extends React.Component {
               {this.props.description && (
                 <p>Description = {this.props.description}</p>
               )}
-              {this.props.errorText && <p>{this.props.errorText}</p>}
+              {this.props.errorText && <h6>{this.props.errorText}</h6>}
             </div>
           </div>
         </>

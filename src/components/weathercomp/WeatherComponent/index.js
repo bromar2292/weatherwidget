@@ -27,27 +27,38 @@ class WeatherComponent extends React.Component {
     // prevents the page from refreshing and loosing the data
     const city = e.target.elements.city.value;
     // grabs the data from the input field called city
-
-    const callApi = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},uk&appid=${API}`
-    );
-    //     if(err) console.error("Cannot fetch Weather Data from API, ", err);
-    // };
-    const data = await callApi.json();
-    console.log(data);
-    console.log(data.message);
-    if (city) {
-      this.setState({
-        errorText: data.message,
-        temperature: data.main.temp,
-        icon: data.weather[0].icon,
-        city: data.name,
-        weather: data.weather[0].main,
-        description: data.weather[0].description,
-        humidity: data.main.humidity,
-        wind: data.wind.speed
-      });
-    } else {
+    try {
+      const callApi = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city},uk&appid=${API}`
+      );
+      const data = await callApi.json();
+      console.log(data);
+      console.log(data.message);
+      if (city) {
+        this.setState({
+          temperature: data.main.temp,
+          icon: data.weather[0].icon,
+          city: data.name,
+          weather: data.weather[0].main,
+          description: data.weather[0].description,
+          humidity: data.main.humidity,
+          wind: data.wind.speed,
+          errorText: "...Try and search for another city"
+        });
+      } else {
+        this.setState({
+          temperature: undefined,
+          icon: undefined,
+          city: undefined,
+          weather: undefined,
+          description: undefined,
+          humidity: undefined,
+          wind: undefined,
+          errorText:
+            "This is not a valid city, try again! we all make spelling mistakes"
+        });
+      }
+    } catch (e) {
       this.setState({
         temperature: undefined,
         icon: undefined,
@@ -56,9 +67,12 @@ class WeatherComponent extends React.Component {
         description: undefined,
         humidity: undefined,
         wind: undefined,
-        errorText: data.message
+        errorText:
+          "This is not a valid city, try again! we all make spelling mistakes"
       });
     }
+
+    //     try and catch added to catch the error and display this is not a valid city message
   };
   render() {
     return (
