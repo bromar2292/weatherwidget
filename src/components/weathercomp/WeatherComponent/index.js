@@ -17,7 +17,8 @@ class WeatherComponent extends React.Component {
       weather: undefined,
       description: undefined,
       humidity: undefined,
-      wind: undefined
+      wind: undefined,
+      errorText: ""
     };
   }
   // ive used set state to collect the data from the api, which then is passed down via props to weather display
@@ -26,22 +27,39 @@ class WeatherComponent extends React.Component {
     // prevents the page from refreshing and loosing the data
     const city = e.target.elements.city.value;
     // grabs the data from the input field called city
+
     const callApi = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city},uk&appid=${API}`
     );
+    //     if(err) console.error("Cannot fetch Weather Data from API, ", err);
+    // };
     const data = await callApi.json();
     console.log(data);
-    this.setState({
-      temperature: data.main.temp,
-      icon: data.weather[0].icon,
-      city: data.name,
-      weather: data.weather[0].main,
-      description: data.weather[0].description,
-      humidity: data.main.humidity,
-      wind: data.wind.speed
-    });
+    console.log(data.message);
+    if (city) {
+      this.setState({
+        errorText: data.message,
+        temperature: data.main.temp,
+        icon: data.weather[0].icon,
+        city: data.name,
+        weather: data.weather[0].main,
+        description: data.weather[0].description,
+        humidity: data.main.humidity,
+        wind: data.wind.speed
+      });
+    } else {
+      this.setState({
+        temperature: undefined,
+        icon: undefined,
+        city: undefined,
+        weather: undefined,
+        description: undefined,
+        humidity: undefined,
+        wind: undefined,
+        errorText: data.message
+      });
+    }
   };
-
   render() {
     return (
       <>
@@ -50,6 +68,7 @@ class WeatherComponent extends React.Component {
             <Header getWeather={this.getWeather} />
             <div className={css.infoDisplay}>
               <InformationDisplay
+                errorText={this.state.errorText}
                 temperature={this.state.temperature}
                 icon={this.state.icon}
                 city={this.state.city}

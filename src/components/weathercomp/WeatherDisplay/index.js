@@ -40,20 +40,27 @@ class InformationDisplay extends React.Component {
     } else {
       return (
         <>
-          <div className={css.imgContainer}>
-            <img src={WeatherIcon()} alt="weather img" />
-          </div>
-          <div>
-            <div>
-              <p>Country = United Kingdom</p>
-              <p>City = {this.props.city}</p>
+          {this.props.icon && (
+            <div className={css.imgContainer}>
+              <img src={WeatherIcon()} alt="weather img" />
             </div>
+          )}
+          <div>
+            {this.props.city && (
+              <div>
+                <p>Country = United Kingdom</p>
+                <p>City = {this.props.city}</p>
+              </div>
+            )}
             <div>
-              <p>Description = {this.props.description}</p>
-              <p>Temp = {celsius} C</p>
+              {this.props.temperature && <p>Temp = {celsius} C</p>}
 
-              <p> Humidity = {this.props.humidity}%</p>
-              <p> Wind = {this.props.wind} mph</p>
+              {this.props.humidity && <p> Humidity = {this.props.humidity}%</p>}
+              {this.props.wind && <p> Wind = {this.props.wind} mph</p>}
+              {this.props.description && (
+                <p>Description = {this.props.description}</p>
+              )}
+              {this.props.errorText && <p>{this.props.errorText}</p>}
             </div>
           </div>
         </>
